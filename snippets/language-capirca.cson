@@ -1,0 +1,78 @@
+#
+# Copyright (c) 2017-present, Facebook, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the BSD-style license found in the
+# LICENSE file in the root directory of this source tree. An additional grant 
+# of patent rights can be found in the PATENTS file in the same directory.
+#
+'.source.capirca':
+  # large policy blocks
+  'New Term':
+    'prefix': 'term'
+    'body': 'term ${1:name} {\n\tcomment:: \"${2:comment}\"\n\tsource-address:: ${3:source-address}\n\tdestination-address:: ${5:destination-address}\n\tdestination-port:: ${6:destination-port}\n\tprotocol:: ${7:tcp}\n\taction:: ${8:accept}\n}\n'
+  'New Term with counter':
+    'prefix': 'termc'
+    'body': 'term ${1:name} {\n\tcomment:: \"${2:comment}\"\n\tsource-address:: ${3:source-address}\n\tdestination-address:: ${5:destination-address}\n\tdestination-port:: ${6:destination-port}\n\tprotocol:: ${7:tcp}\n\taction:: ${8:accept}\n\tcounter:: ${9:counter}\n}\n'
+  'New Header':
+    'prefix': 'header'
+    'body': 'header {\n\tcomment:: \"${1:comment}\"\n\ttarget:: ${2:target}\n}\n'
+  'New Include':
+    'prefix': 'include'
+    'body': '#include ${1:include.inc}\n'
+  # Network and service groups and definitions
+  'New Network Group':
+    'prefix': 'net'
+    'body': '${1:name} =\n\t${2:member1}\n\t${3:member2}\n'
+  'New Service Group':
+    'prefix': 'svc'
+    'body': '${1:name} =\n\t${2:member1}\n\t${3:member2}\n'
+  'Single TCP Port':
+    'prefix': 'tcp'
+    'body': '${1:port}/tcp'
+  'TCP Port Range':
+    'prefix': 'tcpr'
+    'body': '${1:start}-${2:end}/tcp'
+  'Single UDP Port':
+    'prefix': 'udp'
+    'body': '${1:port}/udp'
+  'UDP Port Range':
+    'prefix': 'udpr'
+    'body': '${1:start}-${2:end}/udp'
+  # tokens in a term are listed below here
+  'Source Address':
+    'prefix': 'source-address'
+    'body': 'source-address:: ${1:source}'
+  'Source Port':
+    'prefix': 'source-port'
+    'body': 'source-port:: ${1:port}'
+  'Destination Address':
+    'prefix': 'destination-address'
+    'body': 'destination-address:: ${1:destination}'
+  'Destination Port':
+    'prefix': 'destination-port'
+    'body': 'destination-port:: ${1:port}'
+  'TCP Protocol':
+    'prefix': 'protocol'
+    'body': 'protocol:: ${1:tcp}'
+  'UDP Protocol':
+    'prefix': 'protocolu'
+    'body': 'protocol:: ${1:udp}'
+  'Comment':
+    'prefix': 'comment'
+    'body': 'comment:: \"${1:comment}\"'
+  'Accept Action':
+    'prefix': 'action'
+    'body': 'action:: ${1:accept}'
+  'Deny Action':
+    'prefix': 'actiond'
+    'body': 'action:: ${1:deny}'
+  'Counter':
+    'prefix': 'counter'
+    'body': 'counter:: ${1:term}'
+  'Expiration':
+    'prefix': 'expiration'
+    'body': 'expiration:: ${1:2020-01-01}'
+  'Logging':
+    'prefix': 'logging'
+    'body': 'logging:: ${1:true}'

@@ -1,0 +1,101 @@
+#
+# Copyright (c) 2017-present, Facebook, Inc.
+# All rights reserved.
+#
+# This source code is licensed under the BSD-style license found in the
+# LICENSE file in the root directory of this source tree. An additional grant 
+# of patent rights can be found in the PATENTS file in the same directory.
+#
+'scopeName': 'source.capirca'
+'name': 'Capirca'
+'fileTypes': [
+  'pol',
+  'svc',
+  'net',
+  'inc'
+]
+'patterns': [
+  {
+    # Number sign comments
+    'begin': '(^[ \\t]+)?(?=#(?!include))'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.whitespace.comment.leading.capirca'
+    'end': '(?!\\G)'
+    'patterns': [
+      {
+        'begin': '#'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.capirca'
+        'end': '\\n'
+        'name': 'comment.line.number-sign.capirca'
+      }
+    ]
+  }
+  # comment:: or file-comment lines
+  {
+    'match': '^(?:\\s+)?((?:file-)?comment\\:\\: ?.*)'
+    'name': 'comment.line.number.capirca'
+  }
+  # pound include statements
+  {
+    'begin': '#include'
+    'end': '\\n'
+    'name': 'string.quoted.capirca'
+  }
+  # double colon keywords
+  {
+    'begin': '^(?:\\s+)?((?:protocol|action|counter|apply-groups|logging|option|(?:source|destination)-(?:port|address|exclude|prefix)|target|flexible-match-range|icmp-type|verbatim|platform-exclude|platform|packet-length|qos|policer|application))(::)'
+    'beginCaptures':
+      '1':
+        'name': 'variable.language.capirca'
+      '2':
+        'name': 'keyword.operate.capirca'
+    'end': '\\b'
+  }
+  # term names
+  {
+    'begin': '^(term) ([\\w\\-\\.]+) ?'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.capirca'
+      '2':
+        'name': 'entity.name.function.capirca'
+    'end': '\\n'
+    'name': 'meta.function.capirca'
+  }
+  # headers
+  {
+    'begin': '^(header)(\\s+)?'
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.capirca'
+    'end': '{\\n'
+    'name': 'meta.function.capirca'
+  }
+  # make deny statements pop as invalid
+  {
+    'match': '\\bdeny\\n'
+    'name': 'invalid.illegal.capirca'
+  }
+  # make expiration statements pop as invalid
+  {
+    'match': '\\bexpiration(?=\\:\\:)'
+    'name': 'invalid.illegal.capirca'
+  }
+  # Service and network definitions
+  {
+    'begin': '^([\\w\\-\\.]+)'
+    'beginCaptures':
+      '1':
+        'name': 'entity.name.function.capirca'
+    'end': '\\b'
+    'name': 'meta.function.capirca'
+  }
+  # equals sign operator (also for service and network definitions)
+  {
+    'match': '='
+    'name': 'keyword.operator.capirca'
+  }
+]

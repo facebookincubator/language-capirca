@@ -51,27 +51,27 @@
       '1':
         'name': 'variable.language.capirca'
       '2':
-        'name': 'keyword.operate.capirca'
+        'name': 'keyword.operator.capirca'
     'end': '\\b'
   }
   # term names
   {
-    'begin': '^(term) ([\\w\\-\\.]+) ?'
+    'begin': '^\\s*(term)\\s+([\\w\\-\\.]+) ?'
     'beginCaptures':
       '1':
         'name': 'storage.type.capirca'
       '2':
         'name': 'entity.name.function.capirca'
-    'end': '\\n'
+    'end': '{'
     'name': 'meta.function.capirca'
   }
   # headers
   {
-    'begin': '^(header)(\\s+)?'
+    'begin': '^\\s*(header)(\\s+)?'
     'beginCaptures':
       '1':
         'name': 'storage.type.capirca'
-    'end': '{\\n'
+    'end': '{'
     'name': 'meta.function.capirca'
   }
   # make deny statements pop as invalid
@@ -86,16 +86,13 @@
   }
   # Service and network definitions
   {
-    'begin': '^([\\w\\-\\.]+)'
+    'begin': '^\\s*([\\w\\-\\.]+)\\s*(=)'
     'beginCaptures':
       '1':
         'name': 'entity.name.function.capirca'
+      '2':
+        'name': 'keyword.operator.capirca'
     'end': '\\b'
     'name': 'meta.function.capirca'
-  }
-  # equals sign operator (also for service and network definitions)
-  {
-    'match': '='
-    'name': 'keyword.operator.capirca'
   }
 ]

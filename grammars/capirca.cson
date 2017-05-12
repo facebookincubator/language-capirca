@@ -46,10 +46,10 @@
   }
   # double colon keywords
   {
-    'match': '^(?:\\s+)?((?:protocol(?:-except)?|option|action|counter|apply-groups|logging|(?:source|destination)-(?:port|address|exclude|prefix)|target|flexible-match-range|icmp-type|verbatim|platform-exclude|platform|packet-length|qos|policer|application))(::)'
+    'match': '^(?:\\s+)?((?:protocol(?:-except)?|ether-type|precedence|fragment-offset|loss-priority|traffic-type|routing-instance|option|action|counter|apply-groups|source-interface|logging|(?:source|destination)-(?:port|address|exclude|prefix)|target|flexible-match-range|icmp-type|verbatim|platform-exclude|platform|packet-length|qos|policer|application))(::)'
     'captures':
       '1':
-        'name': 'variable.language.capirca'
+        'name': 'support.function.capirca'
       '2':
         'name': 'keyword.operator.capirca'
   }
@@ -71,7 +71,7 @@
   }
   # target:: / platform:: constants
   {
-    'match': '(?<=target::|platform::)\\s*(arista|aruba|brocade|cisco(?:-?xr|-xe|asa)?|gce|ipset|(?:ip|nf)tables|juniper|juniperqfx|nsxv|panfw|paloalto|pcap|speedway|srx(?:lo)?|vshield|windows(?:_advfirewall|_ipsec)?)'
+    'match': '(?<=target::|platform::|platform-exclude::)\\s*(arista|aruba|brocade|cisco(?:-?xr|-xe|asa)?|gce|ipset|(?:ip|nf)tables|juniper(?:qfx)?|nsxv|panfw|paloalto|pcap|speedway|srx(?:lo)?|vshield|windows(?:_advfirewall|_ipsec)?)'
     'captures':
       '1':
         'name': 'constant.language.capirca'
@@ -87,10 +87,18 @@
   }
   # protocol:: constants - matches any number 0-255, or specific named protocols that capirca accepts
   {
-    'match': '(?<=protocol::)\\s*(\\d\\d?|1\\d\\d|2[0-5][0-5]|ah|egp|esp|fragment|ggp|gre|icmp(?:v6)?|igmp|igp|ipencap|ipip|ipv6(?:-frag|-nonxt|-opts|-route)?|l2tp|ospf|pim|rdp|rsvp|sctp|tcp|udp|vrrp)\\b'
+    'match': '(?<=protocol::)\\s*((\\d\\d?|1\\d\\d|2[0-5][0-5]|ah|egp|esp|fragment|ggp|gre|icmp(?:v6)?|igmp|igp|ipencap|ipip|ipv6(?:-frag|-nonxt|-opts|-route)?|l2tp|ospf|pim|rdp|rsvp|sctp|tcp|udp|vrrp)\\s*)+(?:\\n|#|})'
+    'captures':
+      '0':
+        'name': 'constant.language.capirca'
+    'name': ''
+  }
+  # user defined names, network/port groups in terms, counter names, etc
+  {
+    'match': '(?<=counter::|qos::|policer::|source-port::|destination-port::|source-address::|destination-address::|source-prefix::|destination-prefix::|source-exclude::|destination-exclude::)\\s*([\\w\\-\\.\\s]+)(?=\\n|#|})'
     'captures':
       '1':
-        'name': 'constant.language.capirca'
+        'name': 'variable.language.capirca'
     'name': ''
   }
   # term names
@@ -136,7 +144,7 @@
     'match': '^\\s*([\\w\\-\\.]+)\\s*(=)'
     'captures':
       '1':
-        'name': 'entity.name.function.capirca'
+        'name': 'variable.language.capirca'
       '2':
         'name': 'keyword.operator.capirca'
     'name': 'meta.function.capirca'

@@ -53,13 +53,21 @@
       '2':
         'name': 'keyword.operator.capirca'
   }
-  # option:: keywords
+  # option:: constants
   {
     'match': '(?<=option::)\\s*(established|tcp-established|sample|initial|rst|(first|is)-fragment)'
     'captures':
       '1':
         'name': 'constant.language.capirca'
-    'name': 'meta.parameter'
+    'name': ''
+  }
+  # action:: constants that are acceptance (deny/rejects get shown as invalid below)
+  {
+    'match': '(?<=action::)\\s*(accept|next)'
+    'captures':
+      '1':
+        'name': 'constant.language.capirca'
+    'name': ''
   }
   # term names
   {
@@ -83,8 +91,11 @@
   }
   # make deny statements pop as invalid
   {
-    'match': '\\bdeny\\n'
-    'name': 'invalid.illegal.capirca'
+    'match': '(?<=action::)(?:\\s*)(deny|reject(-with-tcp-rst)?)'
+    'captures':
+      '1':
+        'name': 'invalid.illegal.capirca'
+    'name': ''
   }
   # make expiration statements pop as invalid
   {

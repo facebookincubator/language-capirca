@@ -46,13 +46,12 @@
   }
   # double colon keywords
   {
-    'begin': '^(?:\\s+)?((?:protocol|action|counter|apply-groups|logging|option|(?:source|destination)-(?:port|address|exclude|prefix)|target|flexible-match-range|icmp-type|verbatim|platform-exclude|platform|packet-length|qos|policer|application))(::)'
-    'beginCaptures':
+    'match': '^(?:\\s+)?((?:protocol(?:-except)?|option|action|counter|apply-groups|logging|(?:source|destination)-(?:port|address|exclude|prefix)|target|flexible-match-range|icmp-type|verbatim|platform-exclude|platform|packet-length|qos|policer|application))(::)'
+    'captures':
       '1':
         'name': 'variable.language.capirca'
       '2':
         'name': 'keyword.operator.capirca'
-    'end': '\\b'
   }
   # term names
   {

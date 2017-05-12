@@ -81,8 +81,13 @@
   }
   # make expiration statements pop as invalid
   {
-    'match': '\\bexpiration(?=\\:\\:)'
-    'name': 'invalid.illegal.capirca'
+    'match': '\\b(expiration)(::)'
+    'captures':
+      '1':
+        'name': 'invalid.illegal.capirca'
+      '2':
+        'name': 'keyword.operator.capirca'
+    'name': ''
   }
   # Service and network definitions
   {

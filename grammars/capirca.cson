@@ -44,9 +44,36 @@
     'end': '\\n'
     'name': 'string.quoted.capirca'
   }
-  # double colon keywords
+  # generic double colon keywords supported by all platforms
   {
-    'match': '^(?:\\s+)?((?:protocol(?:-except)?|ether-type|precedence|fragment-offset|loss-priority|traffic-type|routing-instance|option|action|counter|apply-groups|source-interface|logging|(?:source|destination)-(?:port|address|exclude|prefix)|target|flexible-match-range|icmp-type|verbatim|platform-exclude|platform|packet-length|qos|policer|application))(::)'
+    'match': '^(?:\\s+)?((?:protocol(?:-except)?|option|action|counter|logging|(?:source|destination)-(?:port|address|exclude)|target|verbatim|platform-exclude|platform))(::)'
+    'captures':
+      '1':
+        'name': 'support.function.capirca'
+      '2':
+        'name': 'keyword.operator.capirca'
+  }
+  # cisco specific double colon keywords
+  {
+    'match': '^(?:\\s+)?((?:dscp-match|owner|address|logging))(::)'
+    'captures':
+      '1':
+        'name': 'support.function.capirca'
+      '2':
+        'name': 'keyword.operator.capirca'
+  }
+  # juniper/srx specific double colon keywords
+  {
+    'match': '^(?:\\s+)?((?:address|application|apply-groups|counter|(?:source|destination)-(?:prefix(?:-except)?|tag)|dscp-(?:match|except|set)|ether-type|fragment-offset|flexible-match-range|forwarding-class(?:-except)?|hop-limit|icmp-type|logging|loss-priority|next-ip|owner|packet-length|precedence|policer|port|qos|routing-instance|(?:source|destination)-interface|timeout|traffic-(?:type|class-count)|vpn))(::)'
+    'captures':
+      '1':
+        'name': 'support.function.capirca'
+      '2':
+        'name': 'keyword.operator.capirca'
+  }
+  # Palo Alto specific double colon keywords
+  {
+    'match': '^(?:\\s+)?((?:name|pan-application|translated))(::)'
     'captures':
       '1':
         'name': 'support.function.capirca'
@@ -55,7 +82,7 @@
   }
   # option:: constants
   {
-    'match': '(?<=option::)\\s*(established|tcp-established|sample|initial|rst|(first|is)-fragment)'
+    'match': '(?<=option::)\\s*(established|tcp-established|sample|(?:tcp-)?initial|(first|is)-fragment|(?:source|destination)-is-user|negate|syn|ack|fin|rst|urg|psh|all|none)'
     'captures':
       '1':
         'name': 'constant.language.capirca'
@@ -63,7 +90,7 @@
   }
   # action:: constants that are acceptance (deny/rejects get shown as invalid below)
   {
-    'match': '(?<=action::)\\s*(accept|next)'
+    'match': '(?<=action::)\\s*(accept|next|dscp|log|count)'
     'captures':
       '1':
         'name': 'constant.language.capirca'

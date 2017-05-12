@@ -73,7 +73,7 @@
   }
   # Palo Alto specific double colon keywords
   {
-    'match': '^(?:\\s+)?((?:name|pan-application|translated))(::)'
+    'match': '^(?:\\s+)?((?:name|pan-application|translated|export-log))(::)'
     'captures':
       '1':
         'name': 'support.function.capirca'

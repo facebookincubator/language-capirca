@@ -69,6 +69,14 @@
         'name': 'constant.language.capirca'
     'name': ''
   }
+  # target:: constants
+  {
+    'match': '(?<=target::)\\s*(arista|aruba|brocade|cisco(?:-?xr|-xe|asa)?|gce|ipset|(?:ip|nf)tables|juniper|juniperqfx|nsxv|panfw|paloalto|pcap|speedway|srx(?:lo)?|vshield|windows(?:_advfirewall|_ipsec)?)'
+    'captures':
+      '1':
+        'name': 'constant.language.capirca'
+    'name': ''
+  }
   # term names
   {
     'begin': '^\\s*(term)\\s+([\\w\\-\\.]+) ?'

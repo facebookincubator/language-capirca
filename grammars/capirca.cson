@@ -77,6 +77,22 @@
         'name': 'constant.language.capirca'
     'name': ''
   }
+  # logging:: constants
+  {
+    'match': '(?<=logging::)\\s*(true)'
+    'captures':
+      '1':
+        'name': 'constant.language.capirca'
+    'name': ''
+  }
+  # protocol:: constants - matches any number 0-255, or specific named protocols that capirca accepts
+  {
+    'match': '(?<=protocol::)\\s*(\\d\\d?|1\\d\\d|2[0-5][0-5]|ah|egp|esp|fragment|ggp|gre|icmp(?:v6)?|igmp|igp|ipencap|ipip|ipv6(?:-frag|-nonxt|-opts|-route)?|l2tp|ospf|pim|rdp|rsvp|sctp|tcp|udp|vrrp)\\b'
+    'captures':
+      '1':
+        'name': 'constant.language.capirca'
+    'name': ''
+  }
   # term names
   {
     'begin': '^\\s*(term)\\s+([\\w\\-\\.]+) ?'

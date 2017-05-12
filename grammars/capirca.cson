@@ -53,6 +53,14 @@
       '2':
         'name': 'keyword.operator.capirca'
   }
+  # option:: keywords
+  {
+    'match': '(?<=option::)\\s*(established|tcp-established|sample|initial|rst|(first|is)-fragment)'
+    'captures':
+      '1':
+        'name': 'constant.language.capirca'
+    'name': 'meta.parameter'
+  }
   # term names
   {
     'begin': '^\\s*(term)\\s+([\\w\\-\\.]+) ?'

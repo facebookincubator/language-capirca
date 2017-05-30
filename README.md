@@ -9,6 +9,9 @@ Included with this package are the following:
  - The following filetypes will be automatically highlighted: `.pol`, `.inc`, `.net`, and `.svc`. 
  - [Atom code snippets](http://flight-manual.atom.io/using-atom/sections/snippets/) are included to make writing terms, network definitions, and service definitions easier.
 
+Here's a preview with the Dark Room Contrast theme:
+![screen shot 2017-05-30 at 3 04 09 pm](https://cloud.githubusercontent.com/assets/7231007/26607065/764c22f8-4549-11e7-9275-ac3c28079954.png)
+
 ## Installation
 Simply open up settings in Atom (`Cmd-,`), go to `Install`, and search the `packages` section for `language-capirca`. It's a one click install from there.   
 

@@ -3,7 +3,7 @@
 # All rights reserved.
 #
 # This source code is licensed under the BSD-style license found in the
-# LICENSE file in the root directory of this source tree. An additional grant 
+# LICENSE file in the root directory of this source tree. An additional grant
 # of patent rights can be found in the PATENTS file in the same directory.
 #
 'scopeName': 'source.capirca'
@@ -80,6 +80,27 @@
       '2':
         'name': 'keyword.operator.capirca'
   }
+  # squid specific double colon keywords
+  {
+    'match': '^(?:\\s+)?((?:(?:source|destination)-domain(?:-regex)?|urlpath-regex|method))(::)'
+    'captures':
+      '1':
+        'name': 'support.function.capirca'
+      '2':
+        'name': 'keyword.operator.capirca'
+  }
+  # squid method:: constants
+  {
+    'match': '(?<=method::)\\s*((?:GET|get|POST|post|HEAD|head|PUT|put|DELETE|delete|OPTIONS|options|CONNECT|connect)\\b\\s?)+'
+    'captures':
+      # intentionally zero, to get the entire matched capture group, as we could
+      # have multiple methods on one line, like so:
+      # method:: connect get post
+      #          |<- captured ->|
+      '0':
+        'name': 'constant.language.capirca'
+    'name': ''
+  }
   # option:: constants
   {
     'match': '(?<=option::)\\s*(established|tcp-established|sample|(?:tcp-)?initial|(first|is)-fragment|(?:source|destination)-is-user|negate|syn|ack|fin|rst|urg|psh|all|none)'
@@ -98,7 +119,7 @@
   }
   # target:: / platform:: constants
   {
-    'match': '(?<=target::|platform::|platform-exclude::)\\s*(arista|aruba|brocade|cisco(?:-?xr|-xe|asa)?|gce|ipset|(?:ip|nf)tables|juniper(?:qfx)?|nsxv|panfw|paloalto|pcap|speedway|srx(?:lo)?|vshield|windows(?:_advfirewall|_ipsec)?)'
+    'match': '(?<=target::|platform::|platform-exclude::)\\s*(arista|aruba|brocade|cisco(?:-?xr|-xe|asa)?|gce|ipset|(?:ip|nf)tables|juniper(?:qfx)?|nsxv|panfw|paloalto|pcap|speedway|srx(?:lo)?|squid|vshield|windows(?:_advfirewall|_ipsec)?)'
     'captures':
       '1':
         'name': 'constant.language.capirca'

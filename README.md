@@ -46,4 +46,4 @@ Logging  |      logging   |  `logging:: true`
 The CONTRIBUTING.md file has all the information you need to help out if you find a bug or have a new feature you want to add.
 
 ## License
-`language-capirca` is BSD-licensed. We also provide an additional patent grant.
+`language-capirca` is BSD-licensed.
